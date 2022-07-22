@@ -12,6 +12,7 @@ interface IProps {
 }
 
 const VideoCard: NextPage<IProps> = ( { post }) => {
+    console.log( post)
     return (
         <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
             <div>
@@ -30,12 +31,17 @@ const VideoCard: NextPage<IProps> = ( { post }) => {
                             </>
                         </Link>
                     </div>
-                    <div className="bg-gray-600 w-10 h-10">
-                        <link>
+                    <div>
+                        <Link href="#">
                             <div>
-                                <p>{post.postedBy.userName}</p>
+                                <p>{post.postedBy.userName}
+                                    <GoVerified className="text-blue-400 text-md"/>
+                                </p>
+                                <p>
+                                    {post.postedBy.userName}
+                                </p>
                             </div>
-                        </link>
+                        </Link>
                     </div>
                 </div>
             </div>

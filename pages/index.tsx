@@ -15,13 +15,14 @@ const Home  = ( { videos }: IProps) => {
   console.log(videos.map((video) => video.video.asset.url))
   return (
     <div className="flex flex-col gap-10 video bg-primary h-full">
+   
       {
         videos.length ? (
           videos.map((video: Video) => (
             <VideoCard post={video} key={video._id}/>
           ))
         ) :
-        <NoResult text=" No Videos Found"/>
+        <NoResult text= " No Videos Found"/>
       }
     </div>
   )

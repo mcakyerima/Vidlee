@@ -17,7 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }, [])
 
    // if isServerside then we dont wanna show our components
-   if(isServerside) return null;
+  //  if(isServerside) return null;
    return (
     <div>
       <Navbar/>
