@@ -14,7 +14,7 @@ const Home  = ( { videos }: IProps) => {
   console.log(videos)
   console.log(videos.map((video) => video.video.asset.url))
   return (
-    <div className="flex flex-col gap-10 video bg-primary h-full">
+    <div className="flex flex-col gap-10 video h-full">
    
       {
         videos.length ? (
@@ -29,10 +29,12 @@ const Home  = ( { videos }: IProps) => {
 }
 
 // making an api call to our database using axios and next js sereverside Props
+// this will fetch all the videos using the allPostsQuery function and return data
 export const getServerSideProps = async () => {
   const { data } = await axios.get('http://localhost:3000/api/post');
 
   return {
+    // accepting the video data and passing it as props so that we can use it up in our Home parameter
     props: {
       videos: data
     }

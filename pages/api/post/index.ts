@@ -16,5 +16,14 @@ export default async function handler( req: NextApiRequest, res: NextApiResponse
     const data = await client.fetch(query )
     
     res.status(200).json(data)
+  } 
+  // if method is post.. which we are expecting from video upload
+  // then we accept and the document and create the video using the 
+  // client.create and pass in the document
+  else if(req.method === "POST") {
+    const document = req.body
+    client.create(document)
+
+    .then(() => res.status(201).json('video successfully uploaded'))
   }
 }
