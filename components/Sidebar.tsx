@@ -25,7 +25,7 @@ const Sidebar = () => {
       <div className='block xl:hidden m-2 ml-4 mt-3 
             txt-xl'
             onClick = {() => setShowSidebar((previous) => !previous)} >
-              {showSidbar ? <ImCancelCircle/> : <AiOutlineMenu/> }
+              { showSidbar ? <ImCancelCircle/> : <AiOutlineMenu/> }
       </div>
       {showSidbar && (
         <div className='xl:w-400 w-20 flex flex-col
@@ -41,11 +41,9 @@ const Sidebar = () => {
                   </div>
                 </Link>
           </div>
-
-          <Discover/>
-          <SuggestedAccounts/>
-          <Footer/>
-
+            <Discover/>
+            <SuggestedAccounts/>
+            <Footer/>
         </div>
       )}
     </div>

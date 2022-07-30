@@ -1,4 +1,5 @@
 import React from 'react'
+import { MdOutlineVideocamOff } from 'react-icons/md';
 import { NextPage } from 'next';
 
 interface IProps {
@@ -7,7 +8,9 @@ interface IProps {
 
 const NoResult: NextPage<IProps> = ({text}) => {
   return (
-    <div>{text}</div>
+    <div className="flex flex-col justify-center">
+      {text}
+    </div>
   )
 }
 

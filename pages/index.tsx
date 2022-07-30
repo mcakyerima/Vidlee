@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Video } from '../types';
 import VideoCard from '../components/VideoCard'
 import NoResult from '../components/NoResult'
+import { BASE_URL } from '../utils';
 
 
 // creating a data type for our video using typescript interface
@@ -31,7 +32,7 @@ const Home  = ( { videos }: IProps) => {
 // making an api call to our database using axios and next js sereverside Props
 // this will fetch all the videos using the allPostsQuery function and return data
 export const getServerSideProps = async () => {
-  const { data } = await axios.get('http://localhost:3000/api/post');
+  const { data } = await axios.get(`${BASE_URL}/api/post`);
 
   return {
     // accepting the video data and passing it as props so that we can use it up in our Home parameter

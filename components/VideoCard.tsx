@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Video } from '../types';
 import { NextPage } from 'next';
 import Image from "next/image";
@@ -22,6 +22,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
     // reffs in react are like document.getElementById in dom
     const videoReff = useRef<HTMLVideoElement>(null)
 
+    // video play and pause
     const onVideoClick = () => {
         if(playing) {
             videoReff?.current?.pause();
@@ -32,11 +33,18 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
         }
     }
 
+    // video mute/unmute
+    useEffect(() => {
+        if(videoReff?.current) {
+            videoReff.current.muted = isMuted
+        }
+    }, [isMuted])
+
     console.log( post)
     return (
-        <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
+        <div className='flex flex-col border-b-2 border-gray-300 pb-6'>
             <div>
-                <div className='flex gap-3 p-2 cursor-pointer font-semibold rounded'>
+                <div className='flex gap-3  p-2 cursor-pointer font-semibold rounded'>
                     <div className='md:w-16 md:h-16 w-10 h-10'>
                         <Link href='#'>
                             <>
@@ -65,39 +73,39 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
                     </div>
                 </div>
             </div>
-            <div className="lg:ml-20 flex gap-4 relative">
+            <div className=" lg:ml-20  flex gap-4 relative">
                 <div
                     onMouseEnter={() => setIsHover(true)}
                     onMouseLeave={() => setIsHover(false)}
                     className="rounded-3xl">
-                    <Link href="#">
+                    <Link href={`/details/${post._id}`}>
                         <video
                             ref={videoReff}
                             loop
-                            className="lg:w[600px] h-[300px] md:h[400px] lg:h-[530px] w-[200px] rounded-2xl cursor-pointer bg-gray-500"
+                            className="lg:w-[600px] h-[400px] md:h[400px] lg:h-[530px] w-[226px] rounded-2xl cursor-pointer bg-gray-500"
                             src={post.video.asset.url}
                         ></video>
                     </Link>
                     {isHover && (
-                        <div className="relative bottom-12 left-16 cursor-pointer md:left-14 flex gap-10 lg:justify-between w-[100px] md:w[50px] p-3">
+                        <div className="absolute bottom-2 left-10 cursor-pointer md:left-14 flex gap-10 lg:justify-between w-[100px] md:w[50px] p-3">
                             {playing ? (
                                 <button onClick={onVideoClick} >
                                     <BsFillPauseFill 
-                                        className="text-gray-400 text-2xl lg:text-4xl"/>
+                                        className="text-white text-2xl lg:text-4xl"/>
                                 </button>
                             ) : (
                                 <button onClick={onVideoClick} >
                                     <BsFillPlayFill
-                                        className="text-gray-400 text-2xl lg:text-4xl"/>
+                                        className="text-white text-2xl lg:text-4xl"/>
                                 </button>
                             )}
                              {isMuted ? (
-                                <button onClick={() => {setIsMuted(false); videoReff?.current?.muted}}>
-                                    <HiVolumeOff className="text-gray-400 text-2xl lg:text-4xl"/>
+                                <button onClick={() => {setIsMuted(false); }}>
+                                    <HiVolumeOff className="text-white text-2xl lg:text-4xl"/>
                                 </button>
                             ) : (
-                                <button onClick={() => {setIsMuted(true); videoReff?.current?.muted}}>
-                                    <HiVolumeUp className="text-gray-400 text-2xl lg:text-4xl"/>
+                                <button onClick={() => {setIsMuted(true);}}>
+                                    <HiVolumeUp className="text-white text-2xl lg:text-4xl"/>
                                 </button>
                             )}
                         </div>
