@@ -31,11 +31,11 @@ const Navbar = () => {
       <div>SEARCH</div>
       <div>
         { userProfile ? (
-          <div className=" flex gap-5 md:gap-10 ">
+          <div className=" flex gap-5 md:gap-10">
             <Link href="/upload">
-              <button className="border-2 px-2 flex items-center gap-2 md:px-4 text-md font-semibold ">
-                <IoMdAdd className="text-xl"/> { " " }
-                <span className="hidden md:block">upload</span>
+              <button className="border-2 px-2 flex items-center gap-2 md:px-4 text-md font-semibold rounded-md hover:shadow-md">
+                <IoMdAdd color="#f51997" className="text-xl"/> { " " }
+                <span className="hidden md:block">Upload</span>
               </button>
             </Link>
             {

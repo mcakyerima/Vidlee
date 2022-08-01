@@ -10,8 +10,6 @@ import SuggestedAccounts from './SuggestedAccounts';
 import Footer from './Footer';
 
 
-
-
 const Sidebar = () => {
   const [ showSidbar , setShowSidebar ] = useState(true)
 
@@ -44,7 +42,7 @@ const Sidebar = () => {
             <Discover/>
             <SuggestedAccounts/>
             <Footer/>
-        </div>
+          </div>
       )}
     </div>
   )

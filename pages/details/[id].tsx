@@ -25,8 +25,12 @@ const Details = ({postDetails}: IProps) => {
     const [playing, setPlaying] = useState(false);
     const [isHover, setIsHover] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
+    const [comment, setComment] = useState('');
+    const [isPostingComment, setIsPostingComment] = useState(false);
+
+
     // import userprofile from zustand for liking video 
-    const { userProfile } = useAuthStore()
+    const { userProfile }: any = useAuthStore()
 
     const router = useRouter()
     
@@ -63,7 +67,31 @@ const Details = ({postDetails}: IProps) => {
             console.log("userProfile:" , userProfile._id)
             // spread the previos state of post and add a likes object and pass data.likes returned from our api
             setPost({...post, likes: data.likes})
+
+           
              }
+    }
+
+    // add comments functionality
+    const addComment = async (e) => {
+        e.preventDefault();
+        if(userProfile && comment) {
+            setIsPostingComment(true)
+
+             // PUT comment to backend using axios to that specific video we are commenting on 
+            // using the video id
+            const { data } = await axios.put(`${BASE_URL}/api/post/${post._id}`, 
+                { 
+                    userId: userProfile?._id,
+                    comment
+                }
+            );
+            setPost({...post, comments: data.comments})
+            // clear user input
+            setComment('')
+            setIsPostingComment(false);
+
+        }
     }
 
 
@@ -169,7 +197,13 @@ const Details = ({postDetails}: IProps) => {
           
                         )}
                     </div>
-                    <Comments/>
+                    <Comments
+                        comment={comment}
+                        setComment={setComment}
+                        addComment={addComment}
+                        isPostingComment={isPostingComment}
+                        comments={post.comments}
+                    />
                 </div>
                 </div>
             </div>
