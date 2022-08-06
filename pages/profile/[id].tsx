@@ -19,11 +19,22 @@ interface IProps {
 }
 
 const Profile = ({data}: IProps) => {
-  const [showUserVideos, setShowUserVideos] = useState(true)
+  const [showUserVideos, setShowUserVideos] = useState(true);
+
   const { user , userLikes, userPosts } = data
 
   const videos = showUserVideos  ? 'border-b-2 border-black' : 'text-gray-400'
   const liked = !showUserVideos  ? 'border-b-2 border-black' : 'text-gray-400'
+  const [videosList, setVideosList] = useState<Video[]>([])
+
+  // useEffect hook to show videos based on Liked videos or user Videos
+  useEffect(() => {
+    if(showUserVideos){
+      setVideosList(userPosts)
+    }else {
+      setVideosList(userLikes)
+    }
+  },[showUserVideos, userLikes , userPosts])
 
   return(
     <div className="w-full">
@@ -54,6 +65,15 @@ const Profile = ({data}: IProps) => {
           <div className=" flex gap-10 mb-10 mt-10 border-b-2 border-gray-200 w-full bg-white">
             <p className={`text-xl font-semibold cursor-pointer mb-2 ${videos}`} onClick={ () => setShowUserVideos(true)}>videos</p>
             <p className={`text-xl font-semibold cursor-pointer mb-2 ${liked}`} onClick={ () => setShowUserVideos(false)}>Liked</p>
+          </div>
+          <div className="flex gap-6 flex-wrap md:justify-start">
+              {videosList.length > 0 ? (
+                videosList.map((post: Video , index: number) => (
+                  <VideoCard post={post} key={index}/>
+                ))
+              ) : 
+                  <NoResult text={`No ${showUserVideos ? '' : "Liked"} Videos Yet`}/>
+              }
           </div>
         </div>
     </div>

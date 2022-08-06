@@ -1,4 +1,6 @@
 // /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -40,5 +42,22 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hide': {
+          // IE and Edge support
+          '-ms-overflow-style': 'none',
+
+          // Firefox support
+          'scrollbar-width': 'none',
+
+          // safari and Chrome support
+          '&::-webkit-scrollbar' : {
+            display: 'none'
+          }
+        }
+      })
+    })
+  ],
 };

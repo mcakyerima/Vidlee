@@ -40,9 +40,9 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
         }
     }, [isMuted])
 
-    console.log( post)
+    console.log( "VIDEO CARD POST " , post)
     return (
-        <div className='flex flex-col border-b-2 border-gray-300 pb-6'>
+        <div className=' flex flex-col border-b-2 border-gray-300 pb-6'>
             <div>
                 <div className='flex gap-3  p-2 cursor-pointer font-semibold rounded'>
                     <div className='md:w-16 md:h-16 w-10 h-10'>

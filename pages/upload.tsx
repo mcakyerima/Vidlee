@@ -174,6 +174,7 @@ const Upload = () => {
                     <button
                         type="button"
                         className="border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none "
+                        onClick={() => router.push('/')}
                     >
                         Discard
                     </button>
