@@ -36,7 +36,7 @@ const Details = ({postDetails}: IProps) => {
     
     const videoRef = useRef<HTMLVideoElement>(null)
 
-    if(!post) return null;
+    // if(!post) return null;
 
     // play/pause functionality
     const handlePlay = () => {
