@@ -78,7 +78,7 @@ const Upload = () => {
 
   return (
 
-    <div className="flex w-full h-full absolute left-0 top-[60px] mb-10 pt-10 p-10 lg:pt-10 bg-[#f8f8f8] justify-center">
+    <div className="flex w-full h-full absolute left-0 top-[60px] mb-10 pt-10 p-10 lg:pt-10 bg-[#f8f8f8] justify-center drop-shadow-xl">
         <div className="bg-white  rounded-lg xl:h-[80vh] w-[100%] xl:w-[60%] flex gap-6 flex-wrap justify-between items-center p-10 pt-1 ">
             <div>
                 <div>
@@ -117,7 +117,7 @@ const Upload = () => {
                                                 Up to 10 Mins       <br/>
                                                 Less than 2GB 
                                             </p>
-                                            <p className="bg-[#F51997] text-center mt-10 rounded font-medium p-2 w-52 outline-none text-white">
+                                            <p className="bg-[#dc09b9e0] text-center mt-10 rounded font-medium p-2 w-52 outline-none text-white">
                                                 Select File
                                             </p>
                                         </div>
@@ -180,7 +180,7 @@ const Upload = () => {
                     </button>
                     <button
                         type="button"
-                        className="bg-[#f51997] text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none "
+                        className="bg-[#dc09b9e0] text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none "
                         onClick={handlePost}
                     >
                         Post

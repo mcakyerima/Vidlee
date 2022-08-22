@@ -6,7 +6,7 @@ import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { BiSearch } from 'react-icons/bi';
 import { IoMdAdd } from 'react-icons/io';
-import Logo from '../utils/tiktik-logo.png'
+import Logo from '../utils/vidlee.png'
 import { createOrGetUser } from '../utils';
 import userAuthStrore from '../store/auth'
 
