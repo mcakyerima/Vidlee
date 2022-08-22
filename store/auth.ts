@@ -16,17 +16,19 @@ const authStrore = (set: any) => ({
     allUsers: [],
 
 
-    // fetching all users from
-    fetchAllUsers: async () => {
+    _fetchAllUsers: async () => {
         const response = await axios.get(`${BASE_URL}/api/users`);
 
         // use the zustand setter function to set all users to the response we recieve from api call
-    set({allUsers: response.data})
-    console.log("allUsers" , response.data)
-        // go above and add all users to zustand store
-
-
-    }
+        set({ allUsers: response.data });
+        console.log("allUsers", response.data);
+    },
+    get fetchAllUsers() {
+        return this._fetchAllUsers;
+    },
+    set fetchAllUsers(value) {
+        this._fetchAllUsers = value;
+    },
 })
 
 const useAuthStore = create(
