@@ -22,6 +22,8 @@ const Navbar = () => {
 
   }
 
+  // handle search of
+
   const handleSearch = (e: {preventDefault: () => void}) => {
     e.preventDefault()
     if(searchValue){
@@ -48,7 +50,7 @@ const Navbar = () => {
             onSubmit={handleSubmit}>
           <input 
               type="text"
-              className="border-2 p-4 rounded-full bg-primary border-gray-100 px-4 py-4 h-10 focus:outline-none focus:border-2 focus:border-gray-300 shadow-sm font-medium md:text-md w-[300px] md:w-[320px] md:top-0"
+              className="border-2 p-4 rounded-full bg-primary border-gray-100 px-4 py-4 h-10  focus:outline-none focus:border-2 focus:border-gray-300 shadow-sm font-medium md:text-md w-[300px] md:w-[320px] md:top-0"
               placeholder="Search accounts and videos"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
