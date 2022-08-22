@@ -17,7 +17,7 @@ export const createOrGetUser = async (response: any, addUser: any) => {
     image: picture
   }
 
-  // adding user to the persistend state
+  // adding user to the persistent state
   addUser(user)
 
   // post our user credentials to api
